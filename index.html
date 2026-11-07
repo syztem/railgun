@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#07080a">
+<meta name="description" content="An exploded view of the Quake II railgun, rendered live in the browser: take it apart, charge it, fire it.">
+<meta name="htmx-config" content='{"history":false,"defaultTimeout":8000}'>
+<title>RAILGUN // EXPLODED VIEW</title>
+<link rel="modulepreload" href="js/xv-W7RJAWNS.js">
+<link rel="modulepreload" href="js/chunk-45ATHRMO.js">
+<link rel="modulepreload" href="js/chunk-676U6S53.js">
+<link rel="preload" href="assets/railgun.6393e8d6.glb" as="fetch" crossorigin>
+<link rel="preload" href="assets/env/studio_small_09_512.fff74afc.hdr" as="fetch" crossorigin>
+<link rel="preload" href="assets/textures/detail_nor.a44e43a4.ktx2" as="fetch" crossorigin>
+<link rel="preload" href="assets/textures/detail_mask.feb45aca.ktx2" as="fetch" crossorigin>
+<link rel="preload" href="assets/textures/railgun_masks.ce2abcb5.ktx2" as="fetch" crossorigin>
+<link rel="preload" href="assets/vendor/basis-7b7dd534/basis_transcoder.js" as="fetch" crossorigin>
+<link rel="preload" href="assets/vendor/basis-7b7dd534/basis_transcoder.wasm" as="fetch" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="preload" href="assets/fonts/VT323-xv.7ed8cbb3.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/xv-a5aa4d02.css" data-xv-ui>
+<style>
+html, body { margin: 0; height: 100%; background: #07080a; overflow: hidden; }
+#xv-canvas { position: fixed; inset: 0; display: block; width: 100%; height: 100%; outline: none; touch-action: none; }
+.xv-fail { position: fixed; inset: 0; display: grid; place-content: center; margin: 0; padding: 24px; text-align: center;
+  font: 25px/21px "VT323 XV", ui-monospace, monospace; color: #cdb58a; background: #07080a; }
+.xv-fail b { display: block; margin-bottom: 8px; font-weight: 400; color: #d23a1e; text-transform: uppercase; }
+html:not(.xv-nogl) #xv-nogl { display: none; }
+html:not(.xv-nogpu) #xv-nogpu, html.xv-nogl #xv-nogpu { display: none; }
+</style>
+<script>
+(function () {
+  var c = document.documentElement.classList;
+  if (/[?&]nohud(=|&|$)/.test(location.search)) c.add('xv-nohud');
+  if (!('gpu' in navigator)) {
+    c.add('xv-nogpu');
+    var t = document.createElement('canvas');
+    if (!t.getContext('webgl2')) c.add('xv-nogl');
+  }
+})();
+</script>
+<script src="vendor/htmx-4.0.0.min.js" defer></script>
+<script type="module" src="js/xv-W7RJAWNS.js"></script>
+</head>
+<body>
+<canvas id="xv-canvas" tabindex="0" aria-label="Railgun 3D view: drag to orbit, wheel to zoom, click a part to select it"></canvas>
+<div id="xv-ui"></div>
+<p id="xv-nogpu" class="xv-hud-note xv-hud" role="note">NO WEBGPU · WEBGL2 FALLBACK</p>
+<div id="xv-nogl" class="xv-fail" role="alert"><p><b>No WebGPU, no WebGL2</b>This browser cannot draw the railgun.<br>Try a current Chrome, Edge, Firefox or Safari.</p></div>
+<noscript><div class="xv-fail"><p><b>JavaScript is off</b>The railgun is rendered live. Turn JavaScript on to take it apart.</p></div></noscript>
+</body>
+</html>
