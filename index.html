@@ -7,8 +7,8 @@
 <meta name="theme-color" content="#07080a">
 <meta name="description" content="An exploded view of the Quake II railgun, rendered live in the browser: take it apart, charge it, fire it.">
 <meta name="htmx-config" content='{"history":false,"defaultTimeout":8000}'>
-<title>Railgun</title>
-<link rel="modulepreload" href="js/xv-JU23VZUD.js">
+<title>RAILGUN // EXPLODED VIEW</title>
+<link rel="modulepreload" href="js/xv-RU4MMCR4.js">
 <link rel="modulepreload" href="js/chunk-J7RE34O7.js">
 <link rel="modulepreload" href="js/chunk-XFGNQ5XQ.js">
 <link rel="preload" href="assets/railgun.7b1a9a2a.glb.gz" as="fetch" crossorigin>
@@ -23,17 +23,14 @@
 <style>
 html, body { margin: 0; height: 100%; background: #07080a; overflow: hidden; }
 #xv-canvas { position: fixed; inset: 0; display: block; width: 100%; height: 100%; outline: none; touch-action: none; }
-/* R-028: the canvas is a keyboard stop (arrows orbit, +/- zoom while it has focus): it shows where focus is */
 #xv-canvas:focus-visible { outline: 1px solid #ff7a1a; outline-offset: -3px; }
 .xv-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
 .xv-fail { position: fixed; inset: 0; display: grid; place-content: center; margin: 0; padding: 24px; text-align: center;
   font: 25px/21px "VT323 XV", ui-monospace, monospace; color: #cdb58a; background: #07080a; }
 .xv-fail b { display: block; margin-bottom: 8px; font-weight: 400; color: #d23a1e; text-transform: uppercase; }
-/* R-025 / I-05: a boot failure, the no-GL page and the core's fatal / degraded banners (class xv-fatal on body) sit above #xv-ui (z 10) and its
-   opaque #xv-loading; the loading overlay leaves when one of them exists (it would otherwise read LOADING forever) */
 .xv-fail, .xv-fatal { z-index: 30; }
-.xv-fatal:not([id]) { padding: 12px 16px; margin-bottom: -28px; background: #07080a; border: 1px solid #3a3226; }
 body:has(.xv-fatal) #xv-loading, html.xv-nogl #xv-loading { display: none; }
+html.xv-nogl .xv-fatal { display: none; }
 html:not(.xv-nogl) #xv-nogl { display: none; }
 html:not(.xv-nogpu) #xv-nogpu, html.xv-nogl #xv-nogpu { display: none; }
 </style>
@@ -41,9 +38,6 @@ html:not(.xv-nogpu) #xv-nogpu, html.xv-nogl #xv-nogpu { display: none; }
 (function () {
   var c = document.documentElement.classList;
   if (/[?&]nohud(=|&|$)/.test(location.search)) c.add('xv-nohud');
-  // R-025: a boot failure (src/main.js appends div.xv-fatal) is announced as an alert
-  new MutationObserver(function (ms) { ms.forEach(function (m) { m.addedNodes.forEach(function (n) { if (n.classList && n.classList.contains('xv-fatal')) n.setAttribute('role', 'alert'); }); }); })
-    .observe(document.documentElement, { childList: true, subtree: true });
   if (!('gpu' in navigator)) {
     c.add('xv-nogpu');
     var t = document.createElement('canvas');
@@ -52,7 +46,7 @@ html:not(.xv-nogpu) #xv-nogpu, html.xv-nogl #xv-nogpu { display: none; }
 })();
 </script>
 <script src="vendor/htmx-4.0.0.min.js" defer></script>
-<script type="module" src="js/xv-JU23VZUD.js"></script>
+<script type="module" src="js/xv-RU4MMCR4.js"></script>
 </head>
 <body>
 <canvas id="xv-canvas" tabindex="0" role="application" aria-label="Railgun 3D view: drag to orbit, wheel to zoom, click a part to select it" aria-describedby="xv-canvas-hint"></canvas>
